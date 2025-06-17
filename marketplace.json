@@ -1,0 +1,21 @@
+{
+  "label": "Statistical Process Control",
+  "category_label": "Applications",
+  "branding": {
+    "image_uri": "https://www.lkr.dev/img/lkr-dev-logo-light.svg",
+    "tagline": "doing lkr dev",
+    "brand_color": "#000000"
+  },
+  "constants": {
+    "CONNECTION_NAME": {
+      "label": "Connection Name",
+      "value_constraint": "connection"
+    }
+  },
+  "models": [
+    {
+      "name": "statistical-process-control",
+      "connection_constant": "CONNECTION_NAME"
+    }
+  ]
+}

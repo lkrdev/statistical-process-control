@@ -1,73 +1,82 @@
-# Simple Looker Extension
+# Statistical Process Control (SPC) Application
 
-This is a simple, no-frills, modern example of a [Looker extension](https://cloud.google.com/looker/docs/intro-to-extension-framework) built with React and TypeScript that you can use to quickly get up and running with custom functionality in your Looker instance.
+A Looker extension application that enables Statistical Process Control analysis within the Looker platform. This application allows users to perform SPC analysis on their data by selecting time dimensions and measures from their LookML models.
+
+## Features
+
+- Interactive selection of LookML models and explores
+- Dynamic field selection for time dimensions and measures
+- Real-time SPC analysis visualization
+- Creates repeatable table calculations for SPC analysis
+
+## Development Prerequisites
+
+- Node.js (version specified in `.nvmrc`)
+- Looker instance
+- Looker extension framework enabled
 
 ## Installation
-- Clone repo to your local computer
-- `cd simple-looker-extensions`
-- `yarn install`
-- `yarn run dev`
 
-Your extension should now be running at https://localhost:8080/bundle.js.  It is being served over HTTPS by Webpack, but it is not using a verified HTTPS certificate.  In order to bypass the warning you would likely see if you navigated to the aforementioned URL, seen below, click "Advanced", then "Proceed Anyway".
-
-![image](https://github.com/user-attachments/assets/12e1390b-31c4-4036-a909-25dc1e3bc64c)
-
-Looker will now be able to access your extension during development.
-
-### Looker
-
-In a LookML project manifest file, add the following to enable the extension:
-
-```
-application: simple_extension {
-  label: "Simple Extension"
-  url: "https://localhost:8080/bundle.js"
-  # file: "bundle.js"
-  entitlements: {
-    core_api_methods: ["me", "run_inline_query"]
-    navigation: yes
-    use_embeds: yes
-    use_iframes: yes
-    new_window: yes
-    new_window_external_urls: []
-    local_storage: yes
-    external_api_urls: []
-  }
-  mount_points: {
-    dashboard_vis: no
-    dashboard_tile: yes
-    standalone: yes
-  }
-}
+1. Clone the repository:
+```bash
+git clone https://github.com/lkrdev/statistical-process-control.git
+cd statistical-process-control
 ```
 
-You can find the extension under Applications > Simple Extension in the Looker UI left-hand sidebar.
-
-## Production
-
-To productionalize your code, run `npm run build`, then copy the generated **bundle.js** file in the dist/ folder into the LookML project where you've defined the extension.  Comment out the _url_ property and uncomment _file_:
-
-```
-application: simple_extension {
-  label: "Simple Extension"
-  # url: "https://localhost:8080/bundle.js"
-  file: "bundle.js"
-  entitlements: {
-    core_api_methods: ["me", "run_inline_query"]
-    navigation: yes
-    use_embeds: yes
-    use_iframes: yes
-    new_window: yes
-    new_window_external_urls: []
-    local_storage: yes
-    external_api_urls: []
-  }
-  mount_points: {
-    dashboard_vis: no
-    dashboard_tile: yes
-    standalone: yes
-  }
-}
+2. Install dependencies:
+```bash
+npm install
 ```
 
-Commit this change and push to production.
+## Development
+
+To run the application in development mode run the following `npm` command. Change your manifest's application url to `https://localhost:8080/bundle.js`
+
+```bash
+# Run with HTTP
+npm run dev:https
+```
+
+## Building for Production
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+- `src/` - Source code directory
+  - `components/` - React components
+  - `hooks/` - Custom React hooks
+  - `utils/` - Utility functions
+  - `AppContext.tsx` - Main application context and state management
+  - `Explore.tsx` - Explore selection and configuration
+  - `FieldTree.tsx` - Field selection tree component
+  - `Sidebar.tsx` - Application sidebar
+  - `SPCButton.tsx` - SPC analysis trigger component
+
+## Dependencies
+
+- React 17
+- Looker Extension SDK
+- Looker Components
+- Styled Components
+- SWR for data fetching
+- TypeScript
+
+## Configuration
+
+The application is configured through the `manifest.lkml` file, which defines:
+- Application name and label
+- URL for the bundled application
+- Required entitlements and permissions
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request

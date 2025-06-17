@@ -7,3 +7,8 @@ application: statistical_process_control {
     use_iframes: yes
   }
 }
+
+constant: CONNECTION_NAME {
+  value: "looker-private-demo"
+  export: override_required
+}

@@ -7,7 +7,7 @@ on:
 env:
   REGION: us-central1
   APP_NAME: statistical-process-control
-  BUCKET_NAME: ${{ secrets.GCP_BUCKET_NAME }}
+  BUCKET_NAME: ${{ secrets.CDN_BUCKET_NAME }}
   TAG: ${{ github.event.release.tag_name }}
 
 jobs:
@@ -61,7 +61,7 @@ jobs:
 
       - name: Invalidate Cloud CDN
         run: |
-          gcloud compute url-maps invalidate-cdn-cache ${{ secrets.GCP_URL_MAP }} \
+          gcloud compute url-maps invalidate-cdn-cache ${{ secrets.CDN_URL_MAP }} \
             --project ${{ secrets.GCP_PROJECT_ID }} \
             --path=/apps/${{ env.APP_NAME }}/latest/* \
             --async

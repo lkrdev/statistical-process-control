@@ -83,7 +83,7 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
   );
   const [initial_url, setInitialUrl] = useState<string | undefined>();
 
-  const handleSPC = ({
+  const handleSPC = async ({
     time_dimension,
     measure,
     explore,
@@ -96,13 +96,6 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     model: string;
     limit?: number;
   }) => {
-    console.log("handleSPC", {
-      time_dimension,
-      measure,
-      explore,
-      model,
-      limit,
-    });
     let url = `/explore/${model}/${explore}?fields=${time_dimension},${measure}&limit=${limit}&toggle=dat,vis`;
     const dynamic_fields = createDynamicFields(measure);
     url += `&dynamic_fields=${encodeURIComponent(
@@ -111,6 +104,12 @@ export const AppContextProvider: React.FC<{ children: React.ReactNode }> = ({
     const vis = createVis();
     url += `&vis=${encodeURIComponent(JSON.stringify(vis))}`;
     setInitialUrl(url);
+    if (embedSdkConnection) {
+      // TODO: Use options when available in the embed-sdk
+      // @ts-ignore
+      await embedSdkConnection.preload(false, { waitUntilLoaded: true });
+      embedSdkConnection.loadUrl({ url: ["/embed", url].join("") });
+    }
   };
 
   const clearFields = () => {

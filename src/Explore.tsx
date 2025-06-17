@@ -20,7 +20,6 @@ const Explore: React.FC = () => {
   const extension_sdk = useExtensionSdk();
   const dashboardRef = useCallback(
     (el: HTMLDivElement) => {
-      console.log("Explore", initial_url);
       if (el && !el.children.length && initial_url) {
         const embed_sdk = getEmbedSDK();
         embed_sdk.init(extension_sdk.lookerHostData?.hostUrl!);

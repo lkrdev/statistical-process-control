@@ -15,7 +15,18 @@ A Looker extension application that enables Statistical Process Control analysis
 - Looker instance
 - Looker extension framework enabled
 
-## Installation
+## Marketplace Installation
+
+- Navigate to the Looker Marketplace and click Manage
+- In the three dot menu select "Install via Git URL"
+- Enter the following URL: `https://github.com/lkrdev/statistical-process-control.git`
+- Enter `main` in the git commit SHA field
+- Install the application
+- Set the connection to any connection you have access to
+- You can now use the application in your Looker instance by refreshing the page and navigating to Statistical Process Control under Applications
+
+## Development
+
 
 1. Clone the repository:
 ```bash
@@ -27,8 +38,6 @@ cd statistical-process-control
 ```bash
 npm install
 ```
-
-## Development
 
 To run the application in development mode run the following `npm` command. Change your manifest's application url to `https://localhost:8080/bundle.js`
 

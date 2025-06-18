@@ -1,4 +1,4 @@
-# Statistical Process Control (SPC) Application
+# Statistical Process Control (SPC)
 
 A Looker extension application that enables Statistical Process Control analysis within the Looker platform. This application allows users to perform SPC analysis on their data by selecting time dimensions and measures from their LookML models.
 

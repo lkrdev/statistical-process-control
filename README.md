@@ -9,11 +9,6 @@ A Looker extension application that enables Statistical Process Control analysis
 - Real-time SPC analysis visualization
 - Creates repeatable table calculations for SPC analysis
 
-## Development Prerequisites
-
-- Node.js (version specified in `.nvmrc`)
-- Looker instance
-- Looker extension framework enabled
 
 ## Marketplace Installation
 
@@ -25,8 +20,13 @@ A Looker extension application that enables Statistical Process Control analysis
 - Set the connection to any connection you have access to
 - You can now use the application in your Looker instance by refreshing the page and navigating to Statistical Process Control under Applications
 
-## Development
+## Development Prerequisites
 
+- Node.js (version specified in `.nvmrc`)
+- Looker instance
+- Looker extension framework enabled
+
+## Development
 
 1. Clone the repository:
 ```bash
@@ -64,18 +64,9 @@ npm run build
   - `Sidebar.tsx` - Application sidebar
   - `SPCButton.tsx` - SPC analysis trigger component
 
-## Dependencies
-
-- React 17
-- Looker Extension SDK
-- Looker Components
-- Styled Components
-- SWR for data fetching
-- TypeScript
-
 ## Configuration
 
-The application is configured through the `manifest.lkml` file, which defines:
+The application is configured through the [`manifest.lkml` file](./manifest.lkml), which defines:
 - Application name and label
 - URL for the bundled application
 - Required entitlements and permissions
